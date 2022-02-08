@@ -34,13 +34,25 @@ export class RecipeListComponent {
         'instructions': [{'instruction': 'Add tea spoon salt in the yogurt', 'photo': ''}],
         'cover_photo': '/assets/indori_chaat.jpeg',
         'keywords': []
-      })
+      }),
+      Recipe.recipeFromJson( {
+        'id': 2,
+        'title': 'Jalebi',
+        'desc': 'This is my fav sweets',
+        'feed_this_many': 4,
+        'preparation_time': 30,
+        'ingredients': [{'ingredient': 'Yogurt', 'measure': '2 cup'}],
+        'instructions': [{'instruction': 'Add tea spoon salt in the yogurt', 'photo': ''}],
+        'cover_photo': '/assets/jalebi.jpeg',
+        'keywords': []
+      },)
+    ];
       // new Recipe(1, 'Indori Chaat', 'Yummieee...', 4, 60, [], [], '/assets/indori_chaat.jpeg', []),
       // new Recipe(2, 'Jalebi', 'This is my fav sweets', 4, 30, [],[], '/assets/jalebi.jpeg', []),
       // new Recipe(3, 'Rasmalai', 'Lunch Time...its rasmalai time', 2, 60, [], [],'/assets/rasamalai.jpg', []),
       // new Recipe(4, 'Creme Brulee', 'Benus fav', 6, 40, [], [], '/assets/brulee.jpeg', []),
       // new Recipe(5, 'Khamand', 'Gujarati dish ', 6, 30, [], [], '', [])
-    ];
+    
   }
 
   public addRecipeClicked(){
