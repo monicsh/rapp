@@ -59,7 +59,7 @@ export class Recipe{
             return new Recipe(obj.id,
                 obj.title,
                 obj.desc,
-                obj.feeds_this_many,
+                obj.feed_this_many,
                 obj.preparation_time,
             obj.ingredients,
             obj.instructions,
