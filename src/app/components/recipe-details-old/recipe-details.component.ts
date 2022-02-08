@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from 'src/app/model/recipe';
 import { ActivatedRoute, ParamMap} from '@angular/router';
+import { Recipe } from '../../model/recipe';
 
 @Component({
   selector: 'app-recipe-details',
@@ -11,10 +11,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   recipe!: Recipe;
   recipes: Recipe[];
-
-  constructor(private route: ActivatedRoute) {
-
-    
+  constructor(private route: ActivatedRoute) { 
     this.recipes = [
       Recipe.recipeFromJson({
         'id': 1,
@@ -26,32 +23,15 @@ export class RecipeDetailsComponent implements OnInit {
         'instructions': [{'instruction': 'Add tea spoon salt in the yogurt', 'photo': ''}],
         'cover_photo': '/assets/indori_chaat.jpeg',
         'keywords': []
-      }),
-      Recipe.recipeFromJson( {
-        'id': 2,
-        'title': 'Jalebi',
-        'desc': 'This is my fav sweets',
-        'feed_this_many': 4,
-        'preparation_time': 30,
-        'ingredients': [{'ingredient': 'Yogurt', 'measure': '2 cup'}],
-        'instructions': [{'instruction': 'Add tea spoon salt in the yogurt', 'photo': ''}],
-        'cover_photo': '/assets/jalebi.jpeg',
-        'keywords': []
-      },)
+      })
     ];
-   }
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log(params);
-      let recipe_id_string = params.get('recipe_id');
-      let recipe_id_num = parseInt('1');
-
-      this.recipe = this.findRecipeById(recipe_id_num);
-     
-      // this.recipe = this.findRecipeById(parseInt(params.get('recipe_id'), 10));
-      console.log(JSON.stringify(this.recipe, null, 2));
-    });
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   this.recipe = this.findRecipeById(parseInt(params.get('recipe_id'), 10));
+    //   console.log(JSON.stringify(this.recipe, null, 2));
+    // });
   }
 
   findRecipeById(recipe_id: number): Recipe {
@@ -63,5 +43,4 @@ export class RecipeDetailsComponent implements OnInit {
   
     return new Recipe(-1, '', '', 1, 1, [], [], '', []);
   }
-
 }
