@@ -43,14 +43,18 @@ export class RecipeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log(params);
-      let recipe_id_string = params.get('recipe_id');
-      let recipe_id_num = parseInt('1');
+      
+      let recipe_id = params.get('recipe_id')
+      let recipe_id_num: number = 0;
 
+      if(recipe_id != null){
+        recipe_id_num = parseInt(recipe_id, 10);
+      }
+        
       this.recipe = this.findRecipeById(recipe_id_num);
      
       // this.recipe = this.findRecipeById(parseInt(params.get('recipe_id'), 10));
-      console.log(JSON.stringify(this.recipe, null, 2));
+      console.log(" HERE IS THE JSON: \n",JSON.stringify(this.recipe, null, 2));
     });
   }
 
