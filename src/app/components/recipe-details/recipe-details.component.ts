@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/model/recipe';
 import { ActivatedRoute, ParamMap} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,7 +13,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe!: Recipe;
   recipes: Recipe[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private location: Location) {
 
     
     this.recipes = [
@@ -44,12 +45,6 @@ export class RecipeDetailsComponent implements OnInit {
           {'instruction': 'now add 1 tbsp of more curd, 1 tsp green chutney and 1 tsp tamarind chutney', 'photo': ''},
           {'instruction': 'top with 3 tbsp sev and garnish with 1 tsp coriander.', 'photo': ''},
         ],
-
-
-
-
-
-
         'cover_photo': '/assets/indori_chaat.jpeg',
         'keywords': []
       }),
@@ -94,4 +89,7 @@ export class RecipeDetailsComponent implements OnInit {
     return new Recipe(-1, '', '', 1, 1, [], [], '', []);
   }
 
+  public goBackButtonClciked(){
+    this.location.back();
+  }
 }
