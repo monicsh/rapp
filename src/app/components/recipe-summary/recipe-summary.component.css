@@ -11,6 +11,13 @@ div.cover-photo-holder img {
     margin: 10px 0;
 }
 
+div.recipe {
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 600px;
+}
 @media (min-width: 880px) {
     .recipe {
         width: 500px;

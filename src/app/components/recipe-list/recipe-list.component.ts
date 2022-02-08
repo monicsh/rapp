@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../../model/recipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -19,7 +20,7 @@ export class RecipeListComponent {
 
   recipe_in_progress: Recipe;
 
-  constructor() {
+  constructor(private router: Router) {
 
     this.recipe_in_progress = Recipe.createBlank();
     
@@ -76,5 +77,10 @@ export class RecipeListComponent {
     } else{
       this.current_css_style.color = 'red';
     }
+  }
+
+  public recipeClicked(recipe_id: number): void{
+    console.log("i got recipe ID : ", recipe_id);
+    this.router.navigateByUrl('/recipes/' + recipe_id);
   }
 }
