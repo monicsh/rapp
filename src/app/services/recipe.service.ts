@@ -81,5 +81,25 @@ export class RecipeService {
     });
   }
 
+  addRecipe(recipe: Recipe): number {
+    const new_recipe_id = this.getNewRecipeId();
+    recipe.id = new_recipe_id;
+
+    this.recipes.push(recipe);
+
+    return new_recipe_id;
+  }
+
+  getNewRecipeId(): number {
+    let max = 0;
+
+    for( const recipe of this.recipes){
+      if(recipe.id > max){
+        max = recipe.id;
+      }
+    }
+
+    return max + 1;
+  }
 
 }
