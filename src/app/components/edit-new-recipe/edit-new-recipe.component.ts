@@ -17,14 +17,10 @@ export class EditNewRecipeComponent implements OnInit {
   }
 
   public addRecipeClicked(): void{
-
+    console.log(JSON.stringify(this.recipe_in_progress, null, 2));
+    // this.recipes.unshift(this.recipe_in_progress);
+    // this.recipe_in_progress = Recipe.createBlank();
   }
-
-   // public addRecipeClicked(){
-  //   console.log(JSON.stringify(this.recipe_in_progress, null, 2));
-  //   this.recipes.unshift(this.recipe_in_progress);
-  //   this.recipe_in_progress = Recipe.createBlank();
-  // }
 
   public addIngredientPressed(): void{
     if(!this.recipe_in_progress.ingredients){
@@ -35,7 +31,18 @@ export class EditNewRecipeComponent implements OnInit {
   }
 
   public removeIngredientAtIndex(i: number): void {
-this.recipe_in_progress.ingredients.splice(i, 1);
+    this.recipe_in_progress.ingredients.splice(i, 1);
   }
 
+  public addInstructionPressed(): void{
+    if(!this.recipe_in_progress.ingredients){
+      this.recipe_in_progress.instructions = [{ 'instruction': '', 'photo': ''}];
+    } else {
+      this.recipe_in_progress.instructions.push({ 'instruction': '', 'photo': ''});
+    }
+  }
+
+  public removeInstructionAtIndex(i: number): void {
+    this.recipe_in_progress.instructions.splice(i, 1);
+  }
 }

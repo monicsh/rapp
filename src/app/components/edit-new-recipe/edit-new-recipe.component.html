@@ -22,6 +22,7 @@
                 class="form-control" placeholder="Preparation Time" name="preparation_time" />
             <span class="input-group-addon">minutes</span>
         </div>
+
         <label>Ingredients</label>
         <div class="ingredient" *ngFor='let ingredient of recipe_in_progress.ingredients; let i = index'>
             <input type="text" [(ngModel)]="ingredient.ingredient" placeholder="Ingredient"/>
@@ -32,6 +33,17 @@
         <div>
             <input type="button" value="Add" (click)="addIngredientPressed()"/>
         </div>
+
+        <label>Instructions</label>
+        <div class="ingredient" *ngFor='let instruction of recipe_in_progress.instructions; let i = index'>
+            <input type="text" [(ngModel)]="instruction.instruction" placeholder="Instruction"/>
+            <a (click)="removeInstructionAtIndex(i)" 
+            style="color: blue; cursor: pointer; font-size: 80%;">Remove</a>
+        </div> 
+        <div>
+            <input type="button" value="Add" (click)="addInstructionPressed()"/>
+        </div>
+
         <div class="input-group">
             <input type="button" class="btn btn-primary" value="Add Recipe" (click)="addRecipeClicked()" />
         </div>
