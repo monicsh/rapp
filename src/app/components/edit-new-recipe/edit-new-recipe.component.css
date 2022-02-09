@@ -1,0 +1,20 @@
+h1 {
+    font-size: 200%;
+}
+
+
+/* input {
+    margin: 5px;
+}
+
+textarea {
+    margin: 5px;
+} */
+
+div.input-group {
+    margin: 10px 0;
+}
+
+.darkbg {
+    background-color: #aaaaaa;
+}

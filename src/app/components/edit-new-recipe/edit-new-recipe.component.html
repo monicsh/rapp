@@ -1,0 +1,51 @@
+<div style="clear: both"></div>
+<div class="newrecipe panel panel-default" style="max-width: 500px;">
+    <div class="panel-heading">
+        <h4> Add New Recipe</h4>
+    </div>
+    <div class="panel-body">
+        <div class="input-group">
+            <input style="width: 400px;" [(ngModel)]="recipe_in_progress.title" type="text" class="form-control"
+                placeholder="Recipe Title" name="title" />
+        </div>
+        <div class="input-group">
+            <textarea style="width: 400px;" [(ngModel)]="recipe_in_progress.desc" row="5" type="text"
+                class="form-control" placeholder="Recipe Description" name="desc"></textarea>
+        </div>
+        <div class="input-group">
+            <input style="width: 400px;" [(ngModel)]="recipe_in_progress.feeds_this_many" type="text"
+                class="form-control" placeholder="Feed this Many" name="feed_this_many" />
+            <span class="input-group-addon">people</span>
+        </div>
+        <div class="input-group">
+            <input style="width: 400px;" [(ngModel)]="recipe_in_progress.preparation_time" type="text"
+                class="form-control" placeholder="Preparation Time" name="preparation_time" />
+            <span class="input-group-addon">minutes</span>
+        </div>
+
+        <label>Ingredients</label>
+        <div class="ingredient" *ngFor='let ingredient of recipe_in_progress.ingredients; let i = index'>
+            <input type="text" [(ngModel)]="ingredient.ingredient" placeholder="Ingredient"/>
+            <input type="text" [(ngModel)]="ingredient.measure" placeholder="Measure"/>
+            <a (click)="removeIngredientAtIndex(i)" 
+            style="color: blue; cursor: pointer; font-size: 80%;">Remove</a>
+        </div> 
+        <div>
+            <input type="button" value="Add" (click)="addIngredientPressed()"/>
+        </div>
+
+        <label>Instructions</label>
+        <div class="ingredient" *ngFor='let instruction of recipe_in_progress.instructions; let i = index'>
+            <input type="text" [(ngModel)]="instruction.instruction" placeholder="Instruction"/>
+            <a (click)="removeInstructionAtIndex(i)" 
+            style="color: blue; cursor: pointer; font-size: 80%;">Remove</a>
+        </div> 
+        <div>
+            <input type="button" value="Add" (click)="addInstructionPressed()"/>
+        </div>
+
+        <div class="input-group">
+            <input type="button" class="btn btn-primary" value="Add Recipe" (click)="addRecipeClicked()" />
+        </div>
+    </div>
+</div>
