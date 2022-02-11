@@ -1,6 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +12,7 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
 import { EditNewRecipeComponent } from './components/edit-new-recipe/edit-new-recipe.component';
 import { RecipeService } from './services/recipe.service';
 
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -20,6 +22,7 @@ import { RecipeService } from './services/recipe.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'editnewrecipe',

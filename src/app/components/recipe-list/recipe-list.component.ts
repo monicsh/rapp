@@ -17,13 +17,18 @@ export class RecipeListComponent implements OnInit {
     darkbg: false
   };
 
+  recipes_loaded: boolean = false;
   recipes!: Recipe[];
 
   constructor(private router: Router, private recipe_service: RecipeService) { }
 
   ngOnInit(){
     this.recipe_service.getAllRecipes()
-    .subscribe((recipes) => this.recipes = recipes);
+    .subscribe((recipespayoad) => {
+      this.recipes = recipespayoad.data;
+      this.recipes_loaded = true;
+      console.log(recipespayoad.error);
+    });
   }
 
   public recipeZoomedIn(recipe: Recipe): void {

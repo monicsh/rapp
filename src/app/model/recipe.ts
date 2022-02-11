@@ -69,3 +69,22 @@ export class Recipe{
 
 }
 
+export class RecipesPayload {
+    error: string;
+    data: Recipe [];
+
+    constructor(){
+        this.error = '';
+        this.data = [];
+    }
+}
+
+export class RecipePayload {
+    error: string;
+    data: Recipe;
+
+    constructor(){
+        this.error = '';
+        this.data = new Recipe(-1, '','', 1, 1, [], [], '', []);
+    }
+}

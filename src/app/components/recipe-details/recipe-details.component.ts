@@ -11,6 +11,7 @@ import { RecipeService } from '../../services/recipe.service';
 })
 export class RecipeDetailsComponent implements OnInit {
 
+  recipe_loaded: boolean = false;
   recipe!: Recipe;
 
   constructor(private route: ActivatedRoute,
@@ -28,7 +29,12 @@ export class RecipeDetailsComponent implements OnInit {
       }
 
       this.recipe_service.getRecipeById(recipe_id)
-        .subscribe((recipe) => this.recipe = recipe);
+        .subscribe((recipepayload) => {
+          this.recipe = recipepayload.data;
+          this.recipe_loaded = true;
+
+          console.log(recipepayload.error);
+        });
     });
   }
 

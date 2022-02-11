@@ -43,12 +43,9 @@ export class EditNewRecipeComponent implements OnInit {
   }
 
   public addRecipeClicked(): void{
-    const recipe_id = this.recipe_service.addRecipe(this.recipe_in_progress);
-    this.router.navigate(['/recipes', recipe_id]);
-    // console.log(JSON.stringify(this.recipe_in_progress, null, 2));
-
-    // this.recipes.unshift(this.recipe_in_progress);
-    // this.recipe_in_progress = Recipe.createBlank();
+    this.recipe_service.addRecipe(this.recipe_in_progress).subscribe((recipepayload) => {
+      this.router.navigate(['/recipes', recipepayload.data.id]);
+    }); 
   }
 
 }
