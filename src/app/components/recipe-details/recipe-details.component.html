@@ -1,4 +1,12 @@
 <p><a (click)="goBackButtonClciked()" style="cursor: pointer;color: blue ">Go Back</a></p>
+
+<p *ngIf="!recipe_loaded && !load_error">
+    Your recipe is still loading...
+</p>
+
+<p *ngIf="load_error">
+    There is a problem loading your recipe: {{ load_error }}
+</p>
 <div class='recipe'>
     <h5>{{recipe.title}}</h5>
     <div class="cover-photo-holder" style="float: right">

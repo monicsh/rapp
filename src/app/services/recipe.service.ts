@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Recipe, RecipesPayload, RecipePayload } from '../model/recipe';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 
 const RECIPE_SERVER = 'http://localhost:4200';
@@ -31,7 +32,20 @@ export class RecipeService {
       return new Observable();
     }
     
-    return this.http.get<RecipePayload>(RECIPE_SERVER + '/v1/recipes/' + recipe_id + '.json');
+    return this.http.get<RecipePayload>(RECIPE_SERVER + '/v1/recipes/' + recipe_id + '.json')
+    .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse){
+    if(error.error instanceof ErrorEvent){
+      console.log("an error occured", error.error.message);
+    } else {
+      console.log(JSON.stringify(error, null, 2) +
+      `backend return code ${error.status}, ` +
+      `body was ${error.error}`  );
+    }
+
+    return throwError(error.error);
   }
 
   addRecipe(recipe: Recipe): Observable<RecipePayload> {
